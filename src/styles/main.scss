@@ -1,0 +1,88 @@
+@use "add";
+@use "normalize";
+
+#root > div {
+	@include add.flex(column, space-between);
+	min-height: 100vh;
+}
+
+header {
+	@include add.box(100%, 10vh);
+	@include add.flex(row, space-between);
+	padding: 1rem;
+	gap: 1rem;
+	@include add.gradient(add.$l-dark, add.$dark, horizontal);
+
+	color: add.$light;
+	border-bottom: 0.3rem double add.$light;
+	font-family: add.$titan;
+	font-weight: 500;
+	font-size: 2rem;
+
+	& span {
+		transition: transform 0.5s ease-in-out;
+
+		&:hover {
+			transform: scale(1.2);
+		}
+	}
+
+	& div {
+		@include add.flex();
+	}
+
+	& div > img {
+		@include add.box(3.5rem, 2rem);
+	}
+}
+
+main {
+	box-sizing: content-box;
+	flex-grow: 1;
+	width: calc(100% - 4rem);
+	padding: 2rem;
+
+	@include add.flex(column);
+	gap: 2rem;
+	
+	background-image: url(../assets/background.jpg);
+	background-color: linear-gradient(to bottom,
+			rgba(add.$light, 0.6),
+			rgba(add.$dark, 0.3));
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+footer {
+	@include add.box(100%, 10vh);
+	@include add.flex();
+	padding: 0.5rem;
+	gap: 0.5rem;
+	@include add.gradient(add.$l-dark, add.$dark, horizontal);
+	border-top: 0.3rem double add.$light;
+
+	& p {
+		font-family: add.$fedora;
+		font-size: 1rem;
+	}
+
+	& a {
+		display: block;
+		border-radius: 100%;
+
+		& img {
+			@include add.box(2rem);
+			transition: transform 0.5s ease-in-out;
+
+			&:hover {
+				transform: rotate(360deg) scale(1.2);
+			}
+		}
+	}
+}
+
+a {
+	color: add.$light;
+	text-decoration: none;
+}
