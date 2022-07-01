@@ -1,11 +1,25 @@
 import Header from "./components/base/Header";
 import Footer from "./components/base/Footer";
+import PreGameModal from "./components/modals/PreGameModal";
+import StartGameModal from "./components/modals/StartGameModal";
+import { useState } from "react";
 
 function App() {
+  const [gameOptions, setGameOptions] = useState(null);
+
+  const startGame = (options) => setGameOptions(options);
+  const restartGame = () => setGameOptions(null);
+
   return (
     <div>
       <Header />
-      <main></main>
+      <main>
+        {gameOptions ? (
+          <PreGameModal startGame={startGame} />
+        ) : (
+          <StartGameModal gameOptions={gameOptions} restartGame={restartGame} />
+        )}
+      </main>
       <Footer />
     </div>
   );
