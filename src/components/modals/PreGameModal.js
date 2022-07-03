@@ -25,7 +25,7 @@ export default function PreGameModal({ startGame }) {
   const [difficulty, setDifficulty] = useState();
 
   const starter = () => {
-    startGame({ category, difficulty });
+    startGame([category, difficulty]);
   };
 
   return (

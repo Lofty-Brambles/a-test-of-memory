@@ -14,7 +14,7 @@ function App() {
     <div>
       <Header />
       <main>
-        {gameOptions ? (
+        {!gameOptions ? (
           <PreGameModal startGame={startGame} />
         ) : (
           <StartGameModal gameOptions={gameOptions} restartGame={restartGame} />
