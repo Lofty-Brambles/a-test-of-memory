@@ -1,15 +1,3 @@
-/* React for images */
-
-import React from "react";
-
-function Image ({ id, url }) {
-	return (
-		<img className="images" id={ id } src={ url } alt={ url } />
-	)
-}
-
-/* Rest of the code */
-
 const fetchImageCount = difficulty => {
 	switch (difficulty) {
 		case "Easy": return 5;
@@ -56,17 +44,12 @@ export default class Map {
 		const images = await imgArr( this.type, getapiLink );
 		if ( images === "Error" ) return "❌ | Could not fetch images :(";
 		this.images = images;
-		const imgEle = images.map((it, index) => ( <Image id={ index } url={ it } /> ));
-		return imgEle;
 	}
 
 	hit( id ) {
 		if ( this.hitArray[id] === false ) {
 			this.hitArray[id] = true;
 			this.score++;
-			return "Continue";
-		} else {
-			return "Over";
 		}
 	}
 

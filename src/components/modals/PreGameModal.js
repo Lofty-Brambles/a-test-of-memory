@@ -1,25 +1,6 @@
 import React, { useState } from "react";
 
-function MultiBox({ cl, name, selectedItem, onChange }) {
-  const checkedState = name === selectedItem;
-
-  return (
-    <div className="wrap">
-      <span id="input">
-        <input
-          type="radio"
-          className={cl}
-          name={name}
-          value={name}
-          checked={checkedState}
-          onChange={onChange}
-        />
-        <span></span>
-      </span>
-      <label htmlFor={name}>{name}</label>
-    </div>
-  );
-}
+import MultiBox from "./../utils/Multibox";
 
 export default function PreGameModal({ startGame }) {
   const categories = ["Kitties!", "Doggos!", "Random!"];

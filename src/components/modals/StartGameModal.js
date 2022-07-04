@@ -15,6 +15,9 @@ export default function StartGameModal({ gameOptions, setter }) {
     setter(opt);
     setHighScore(score);
   }
+  function currentScoreSetter(score) {
+    setCurrentScore(score);
+  }
 
   useEffect(() => {
     (async () => {
@@ -49,6 +52,7 @@ export default function StartGameModal({ gameOptions, setter }) {
                 window.location.reload();
               });
             } else {
+              currentScoreSetter(board.score);
             }
           }
         });
