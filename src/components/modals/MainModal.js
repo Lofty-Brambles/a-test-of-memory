@@ -43,7 +43,7 @@ export default function StartGameModal({ gameOptions, setter }) {
     if (highScore > newScore) setHighScore(newScore);
     setCurrentScore(newScore);
 
-    if (clicked.length === images.length) {
+    if (clicked.length === images.length - 1) {
       Swal.fire({
         allowOutsideClick: false,
         icon: "success",
@@ -61,7 +61,9 @@ export default function StartGameModal({ gameOptions, setter }) {
   }
 
   function shuffleImages() {
-    const newArr = images.sort(() => Math.random - 0.5);
+    const newArr = images;
+	newArr.sort((a, b) => 0.5 - Math.random);
+	console.log(newArr, images);
     setImages(newArr);
   }
 

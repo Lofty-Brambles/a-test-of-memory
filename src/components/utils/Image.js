@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function Image({ id, url, handleClicks }) {
+export default function Image({ identity, url, handleClicks }) {
   return (
     <img
       className="images"
-      id={id}
+	  id={identity}
       src={url}
       alt={url}
       onClick={handleClicks}

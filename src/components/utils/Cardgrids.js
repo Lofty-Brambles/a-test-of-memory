@@ -5,7 +5,7 @@ export default function Cardgrid({ images, handleClicks }) {
   return (
     <div className="card-grid">
       {images.map(({ id, it }) => (
-        <Image id={id} url={it} handleClicks={handleClicks} />
+        <Image key={id} identity={id} url={it} handleClicks={handleClicks} />
       ))}
     </div>
   );
