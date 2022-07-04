@@ -22,7 +22,7 @@ export default function StartGameModal({ gameOptions, setter }) {
   }, []);
 
   function handleClicks(e) {
-    const imageId = e.target.id;
+    const imageId = Number(e.target.id);
     const idArr = clicked.map((ele) => (ele ?? "").id);
     if (idArr.includes(imageId)) {
       resetRound();
@@ -55,7 +55,7 @@ export default function StartGameModal({ gameOptions, setter }) {
       });
     } else {
       const idArr = images.map((ele) => ele.id);
-      const ele = idArr.indexOf(id);
+      const ele = idArr.indexOf(Number(id));
       setClicked((prev) => [...prev, images[ele]]);
     }
   }
