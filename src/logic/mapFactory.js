@@ -30,8 +30,7 @@ const fetchLinks = ( type, count ) => {
 const imgArr = async ( type, link ) => {
 	try {
 		const injson = await fetch( link );
-		const obj = injson.json();
-		console.log(obj);
+		const obj = await injson.json();
 		switch (type) {
 			case "Kitties!": return obj.map( it => it.url );
 			case "Doggos!": return obj.message;
@@ -44,7 +43,7 @@ const imgArr = async ( type, link ) => {
 };
 
 export default class Map {
-	constructor( options ) {
+	constructor( ...options ) {
 		this.type = options[0];
 		this.difficulty = options[1];
 		this.hitArray = new Array( fetchImageCount( options[1] ) ).fill(false);

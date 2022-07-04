@@ -16,7 +16,7 @@ function App() {
         {!gameOptions ? (
           <PreGameModal startGame={startGame} />
         ) : (
-          <StartGameModal gameOptions={gameOptions} />
+          <StartGameModal gameOptions={gameOptions} setter={setGameOptions} />
         )}
       </main>
       <Footer />
