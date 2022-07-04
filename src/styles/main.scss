@@ -53,8 +53,8 @@ main {
 	background-position: center;
 	background-repeat: no-repeat;
 
-	& > div > img {
-		@include add.box( 10.8rem, 6rem );
+	&>div>img {
+		@include add.box(10.8rem, 6rem);
 	}
 }
 
@@ -194,3 +194,54 @@ input[type=radio] {
 	}
 }
 
+.score-tab {
+	width: 80%;
+	@include add.flex(row, space-around);
+	padding: 0.5rem;
+	gap: 0.5rem;
+
+	background-color: rgba(add.$light, 0.85);
+	border: 2px solid add.$l-dark;
+	border-radius: 0.5rem;
+	box-shadow: rgba(add.$light , 0.6) 0px 5px 15px;
+	@include add.fappl();
+	font-family: add.$fedora;
+
+	&>div {
+		@include add.flex();
+		@include add.box(2rem);
+		border-radius: 50%;
+		background-color: add.$l-bloo;
+		color: add.$light;
+	}
+}
+
+.card-grid {
+	box-sizing: border-box;
+	width: 80%;
+	padding: 2rem;
+	gap: 1rem;
+
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+
+	@media (max-width: 975px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+	@media (max-width: 778px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@media (max-width: 570px) {
+		grid-template-columns: repeat(1, 1fr);
+	}
+
+	background-color: rgba(add.$light, 0.85);
+	border: 2px solid add.$l-dark;
+	border-radius: 0.5rem;
+	box-shadow: rgba(add.$light , 0.6) 0px 5px 15px;
+
+	&>img {
+		border: 2px solid add.$l-dark;
+		width: 150px !important;
+	}
+}

@@ -1,7 +1,7 @@
 import Header from "./components/base/Header";
 import Footer from "./components/base/Footer";
 import PreGameModal from "./components/modals/PreGameModal";
-import StartGameModal from "./components/modals/StartGameModal";
+import StartGameModal from "./components/modals/MainModal";
 import { useState } from "react";
 
 function App() {
