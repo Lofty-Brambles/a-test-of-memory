@@ -1,58 +1,78 @@
 import React, { useState } from "react";
 
-function MultiBox({ key, name, selectedItem, onChange }) {
+function MultiBox({ cl, name, selectedItem, onChange }) {
   const checkedState = name === selectedItem;
 
   return (
     <div className="wrap">
-      <input
-        type="radio"
-        name={name}
-        id={key}
-        value={name}
-        checked={checkedState}
-        onChange={onChange}
-      />
+      <span id="input">
+        <input
+          type="radio"
+          className={cl}
+          name={name}
+          value={name}
+          checked={checkedState}
+          onChange={onChange}
+        />
+        <span></span>
+      </span>
       <label htmlFor={name}>{name}</label>
     </div>
   );
 }
 
 export default function PreGameModal({ startGame }) {
-  const categories = ["Kitties!", "Doggos!", "Birbs!", "Duccs!", "Fishies!"];
-  const difficulties = ["Easy", "Medium", "Difficult", "Oh-no"];
+  const categories = ["Kitties!", "Doggos!", "Random!"];
+  const difficulties = ["Easy", "Medium", "Hard", "Oh-no"];
   const [category, setCategory] = useState(categories);
   const [difficulty, setDifficulty] = useState();
 
   const starter = () => {
-    startGame([category, difficulty]);
+    const set1 = [...document.querySelectorAll(".Category")].map(
+      (e) => e.checked
+    );
+    const set2 = [...document.querySelectorAll(".Difficulty")].map(
+      (e) => e.checked
+    );
+    if (
+      set1.reduce((prev, next) => prev || next) &&
+      set2.reduce((prev, next) => prev || next)
+    ) {
+      startGame([category, difficulty]);
+    }
   };
 
   return (
-    <div>
-      <h3>Get a pet!</h3>
+    <div id="pre-game-modal">
       <div>
-        {categories.map((it) => (
-          <MultiBox
-            key={it}
-            name={it}
-            selectedItem={category}
-            onChange={(e) => setCategory(e.target.value)}
-          />
-        ))}
+        <h3>Get a pet!</h3>
+        <div>
+          {categories.map((it, index) => (
+            <MultiBox
+              cl={"Category"}
+              key={index}
+              name={it}
+              selectedItem={category}
+              onChange={(e) => setCategory(e.target.value)}
+            />
+          ))}
+        </div>
       </div>
-      <h3>Select a difficulty!</h3>
       <div>
-        {difficulties.map((it) => (
-          <MultiBox
-            key={it}
-            name={it}
-            selectedItem={difficulty}
-            onChange={(e) => setDifficulty(e.target.value)}
-          />
-        ))}
+        <h3>Select a difficulty!</h3>
+        <div>
+          {difficulties.map((it, index) => (
+            <MultiBox
+              cl={"Difficulty"}
+              key={index}
+              name={it}
+              selectedItem={difficulty}
+              onChange={(e) => setDifficulty(e.target.value)}
+            />
+          ))}
+        </div>
       </div>
-      <button onClick={starter}></button>
+      <button onClick={starter}>Click to start!</button>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Federant&family=Indie+Flower&family=Titan+One&display=swap');
 
 $light: #f1f5f9;
+$l-light: #aaa;
 $dark: #000;
 $l-dark: #777;
 $cyan: #0ff;
@@ -37,6 +38,18 @@ $titan: "Titan One", cursive;
 		-1px 1px 0px $col,
 		1px -1px 0px $col,
 		-1px -1px 0px $col;
+}
+
+@mixin fappl($scale: 1) {
+	font-size: $scale * 1.5rem;
+
+	@media ( max-width: 900px ) {
+		font-size: $scale * 1.25rem;
+	}
+
+	@media ( max-width: 600px ) {
+		font-size: $scale * 1rem;
+	}
 }
 
 @mixin gradient($start-color, $end-color, $orientation) {

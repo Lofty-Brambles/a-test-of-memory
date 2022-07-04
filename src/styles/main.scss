@@ -1,7 +1,7 @@
 @use "add";
 @use "normalize";
 
-#root > div {
+#root>div {
 	@include add.flex(column, space-between);
 	min-height: 100vh;
 }
@@ -31,7 +31,7 @@ header {
 		@include add.flex();
 	}
 
-	& div > img {
+	& div>img {
 		@include add.box(3.5rem, 2rem);
 	}
 }
@@ -44,7 +44,7 @@ main {
 
 	@include add.flex(column);
 	gap: 2rem;
-	
+
 	background-image: url(../assets/background.jpg);
 	background-color: linear-gradient(to bottom,
 			rgba(add.$light, 0.6),
@@ -52,6 +52,10 @@ main {
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
+
+	& > div > img {
+		@include add.box( 10.8rem, 6rem );
+	}
 }
 
 footer {
@@ -86,3 +90,107 @@ a {
 	color: add.$light;
 	text-decoration: none;
 }
+
+#pre-game-modal {
+	@include add.box(100%);
+	@include add.flex(column);
+	padding: 1rem;
+	gap: 1rem;
+
+	background-color: rgba(add.$light, 0.6);
+	border-radius: 2rem;
+	box-shadow: rgba(add.$light , 0.6) 0px 5px 15px;
+	font-family: add.$flower;
+	font-weight: 800;
+
+	&>div {
+		width: 80%;
+		@include add.flex(column);
+		padding: 0.5rem;
+		gap: 0.5rem;
+
+		background-color: rgba(add.$light, 0.85);
+		border: 2px solid add.$l-dark;
+		border-radius: 0.5rem;
+		@include add.fappl(0.7);
+
+		& h3 {
+			@include add.fappl();
+			font-family: add.$titan;
+			font-weight: 100;
+		}
+	}
+
+	&>div>div {
+		@include add.flex(row, space-around);
+		width: 80%;
+		gap: 0.25rem;
+
+		& .wrap {
+			@include add.flex();
+			gap: 0.25rem;
+		}
+	}
+
+	& button {
+		padding: 0.75rem 1.25rem;
+		outline: 0;
+		border: 1px solid add.$cyan;
+		position: relative;
+
+		background-color: rgba(add.$light , 0);
+		font-weight: 800;
+		user-select: none;
+		touch-action: manipulation;
+
+		&::after {
+			content: "";
+			border: 1px solid add.$dark;
+			width: 100%;
+			position: absolute;
+
+			height: 100%;
+			top: 0.5rem;
+			left: 0.5rem;
+			transition: 0.2s;
+		}
+
+		&:hover::after {
+			top: 0;
+			left: 0;
+		}
+	}
+}
+
+input[type=radio] {
+	appearance: none;
+	@include add.box(1rem);
+	border: 1.5px solid add.$l-dark;
+	border-radius: 20%;
+
+	position: relative;
+	outline: none;
+	cursor: pointer;
+	transition: background-color 0.3s;
+
+	&:checked,
+	&:active {
+		background-color: add.$l-light;
+	}
+
+	&+span {
+		position: relative;
+	}
+
+	&:checked+span::before {
+		content: '\2713';
+		display: block;
+		text-align: center;
+		color: add.$bloo;
+
+		position: absolute;
+		left: -0.8rem;
+		top: 0rem;
+	}
+}
+

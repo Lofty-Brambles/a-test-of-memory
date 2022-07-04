@@ -8,7 +8,6 @@ function App() {
   const [gameOptions, setGameOptions] = useState(null);
 
   const startGame = (options) => setGameOptions(options);
-  const restartGame = () => setGameOptions(null);
 
   return (
     <div>
@@ -17,7 +16,7 @@ function App() {
         {!gameOptions ? (
           <PreGameModal startGame={startGame} />
         ) : (
-          <StartGameModal gameOptions={gameOptions} restartGame={restartGame} />
+          <StartGameModal gameOptions={gameOptions} />
         )}
       </main>
       <Footer />
